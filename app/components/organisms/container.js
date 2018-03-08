@@ -50,7 +50,7 @@ class SliderContainer extends React.Component{
           <Slider {...settings_main} ref={slider => this.slider_main = slider} asNavFor={this.slider_nav}>
             {shows.map(show =>
               <div className="m__show-item" key={`item_${show.id}`}>
-                <img src={show.product_image_url} />
+                <img src={require(`@/app/assets/images/${show.product_image_url}`)} />
                 <p>{show.episodes} episodes</p>
                 <h2>{show.title}</h2>
               </div>

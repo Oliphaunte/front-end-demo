@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.dev.config.js",
     "start-api": "json-server --watch shows.json",
-    "build": "rm -rf dist && webpack -p --config ./webpack.prod.config.js"
+    "build": "rm -rf dist && NODE_ENV=production webpack -p --config=webpack.prod.config.js"
   },
   "engines": {
     "node": ">=8.9.1",

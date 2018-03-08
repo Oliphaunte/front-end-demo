@@ -12,8 +12,6 @@ const extractHtml = new HtmlWebpackPlugin({
 });
 
 // Rules //
-const outputPath = 'assets/'
-const publicPath = './'
 const jsRules = {
   test: /\.(js|jsx)$/,
   use: 'babel-loader',
@@ -24,8 +22,9 @@ const fileRules = {
   loader: 'file-loader',
   options: {
     name: "[name].[ext]",
-    outputPath: `${outputPath}`,
-    publicPath: `${publicPath}/${outputPath}`
+    publicPath: "./",
+    outputPath: './assets/',
+    useRelativePath: process.env.NODE_ENV === "production"
   }
 };
 

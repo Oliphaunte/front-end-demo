@@ -1,13 +1,24 @@
 {
-  "presets": [[
-    "env", {
-      "targets": {
-          "node": "current"
-        }
-      }
-    ], "react"],
-  "plugins": [
-    [ "babel-plugin-root-import", { "rootPathPrefix": "@" } ],
-    [ "transform-class-properties" ]
-  ]
+  "env": {
+    "production": {
+      "presets": ["env", "react"],
+      "plugins": [
+        [ "babel-plugin-root-import", { "rootPathPrefix": "@" } ],
+        [ "transform-class-properties" ]
+      ]
+    },
+    "development": {
+      "presets": [[
+        "env", {
+          "targets": {
+              "node": "current"
+            }
+          }
+        ], "react"],
+      "plugins": [
+        [ "babel-plugin-root-import", { "rootPathPrefix": "@" } ],
+        [ "transform-class-properties" ]
+      ]
+    }
+  }
 }

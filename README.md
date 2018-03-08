@@ -10,5 +10,6 @@
 1. Clone Repo
 2. Run `touch .env` and copy input from `.env.example` into it
 3. Run `yarn install`
-4. Run `yarn start-api`
-5. Run `yarn start` and open browser to port 3200
+4. Run `yarn build` to store our static assets in a single location for dev-server and production
+5. Run `yarn start-api`
+6. Run `yarn start` and open browser to port 3200
