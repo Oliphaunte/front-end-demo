@@ -1,0 +1,48 @@
+footer {
+  z-index: $higher_index;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $footer_height_mobile;
+  font-size: 8px;
+
+  box-sizing: border-box;
+
+  p, a {
+    text-transform: uppercase;
+    font-family: 'ACaslonPro-Regular', sans-serif;
+    color: rgba(77, 77, 77, 1);
+  }
+
+  span {
+    padding: 0 0 0 4px;
+  }
+
+  a {
+    padding: 2px 2px;
+    text-decoration: underline;
+    transition: color 0.3s;
+
+    &:hover {
+      text-transform: uppercase;
+      text-decoration: underline;
+      font-family: 'ACaslonPro-Regular', sans-serif;
+
+      color: rgba(160, 160, 160, 1);
+      transition: color 0.3s;
+    }
+  }
+
+  @include breakpoint($mobile) {
+  }
+
+  @include breakpoint($tablet) {
+    height: $footer_height_tablet;
+  }
+  
+  @include breakpoint($tablet_landscape) {
+  }
+
+  @include breakpoint($desktop) {
+  }
+}

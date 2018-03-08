@@ -1,0 +1,13 @@
+{
+  "presets": [[
+    "env", {
+      "targets": {
+          "node": "current"
+        }
+      }
+    ], "react"],
+  "plugins": [
+    [ "babel-plugin-root-import", { "rootPathPrefix": "@" } ],
+    [ "transform-class-properties" ]
+  ]
+}

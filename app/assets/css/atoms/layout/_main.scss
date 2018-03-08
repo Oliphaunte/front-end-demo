@@ -1,0 +1,21 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+  
+  margin: #{$header_height_mobile} 0 0;
+  min-height: calc(100% - (#{$header_height_mobile} + #{$footer_height_mobile}));
+
+  @include breakpoint($mobile) {
+  }
+
+  @include breakpoint($tablet) {
+    margin: #{$header_height_tablet} 0 0;
+    min-height: calc(100% - (#{$header_height_tablet} + #{$footer_height_tablet}));
+  }
+  
+  @include breakpoint($tablet_landscape) {
+  }
+
+  @include breakpoint($desktop) {
+  }
+}

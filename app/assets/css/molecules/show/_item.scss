@@ -1,0 +1,38 @@
+.m__show-item {
+  text-align: center;
+
+  h2 {
+    margin: 5px 0 0;
+    font-size: 22px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: $general_black;
+  }
+
+  p {
+    margin: 15px 0 0;
+
+    font-size: 12px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: $medium_gray;
+  }
+
+  img {
+    margin: 0 auto;
+    width: 100%;;
+    max-width: 300px;
+  }
+
+  @include breakpoint($mobile) {
+  }
+
+  @include breakpoint($tablet) {
+  }
+  
+  @include breakpoint($tablet_landscape) {
+  }
+
+  @include breakpoint($desktop) {
+  }
+}

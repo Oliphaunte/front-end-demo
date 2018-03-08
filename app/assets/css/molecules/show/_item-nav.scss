@@ -1,0 +1,45 @@
+.m__show-item-nav {
+  text-align: center;
+
+  > .nav-block {
+    display: block;
+    margin: 0 auto;
+
+    width: 40px;
+    height: 40px;
+    background-color: rgba($general_gray, 1);
+    transition: all 0.3s;
+  }
+
+  p {
+    margin: 20px 0 0;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &.slick-current {
+    > .nav-block {
+      margin: 0 auto;
+  
+      background-color: rgba($general_black, 1);
+      transition: all 0.3s;
+    }
+
+    p {
+      opacity: 1;
+      transition: all 0.3s;
+    }
+  }
+
+  @include breakpoint($mobile) {
+  }
+
+  @include breakpoint($tablet) {
+  }
+  
+  @include breakpoint($tablet_landscape) {
+  }
+
+  @include breakpoint($desktop) {
+  }
+}

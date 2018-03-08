@@ -1,0 +1,26 @@
+// Colors
+$general_white: rgb(255, 255, 255);
+$general_black: rgb(0, 0, 0);
+$general_gray: rgb(225, 225, 225);
+$light_gray: rgb(234, 234, 234);
+$medium_gray: rgb(170, 170, 170);
+
+// Layout
+$header_height_mobile:     0px;
+$footer_height_mobile:     0px;
+$header_height_tablet:     0px;
+$footer_height_tablet:     0px;
+
+// Breakpoints
+$mobile:            520px;
+$tablet:            700px;
+$tablet_landscape:  980px;
+$desktop:           1201px;
+
+// Indexes
+$lowest_index:  -1;
+$low_index:     100;
+$medium_index:  400;
+$high_index:    900;
+$higher_index:  990;
+$highest_index: 999;

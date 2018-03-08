@@ -1,0 +1,15 @@
+.t__main-page {
+  align-content: flex-start;
+  
+  @include breakpoint($mobile) {
+  }
+
+  @include breakpoint($tablet) {
+  }
+  
+  @include breakpoint($tablet_landscape) {
+  }
+
+  @include breakpoint($desktop) {
+  }
+}

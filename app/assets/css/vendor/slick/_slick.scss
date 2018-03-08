@@ -1,0 +1,11 @@
+// If you have flex property on container div of slider, use below css
+* {
+  min-height: 0;
+  min-width: 0;
+}
+//
+
+.slick-slide {
+  // padding: 0 20px;
+  height: auto;
+}
