@@ -27,7 +27,7 @@ class SliderContainer extends React.Component{
       focusOnSelect: true,
       arrows: false,
       responsive: [
-      { breakpoint: 1024,
+      { breakpoint: 980,
         settings: {
           centerMode: true,
           centerPadding: '60px',
