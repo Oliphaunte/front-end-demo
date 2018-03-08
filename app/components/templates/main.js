@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
 
 import QS from 'qs'
-import SliderWrapperMain from '@/app/components/organisms/show/wrapper-main'
-import SliderWrapperNav from '@/app/components/organisms/show/wrapper-nav'
 import Container from '@/app/components/organisms/container'
 
 const History = createBrowserHistory()
@@ -26,9 +24,7 @@ class Main extends React.Component {
       .then(shows => this.setState({shows}) )
       .then(() => this.updateParams())
       .then(() => this.updateSlider())
-      .catch(err => {
-        console.error(err)
-      });
+      .catch(err => console.error(err));
   }
 
   componentDidUpdate() {
@@ -80,8 +76,6 @@ class Main extends React.Component {
 
     return(
       <main className="t__main-page">
-        {/* <SliderWrapperMain shows={shows} ref={slider => this.slider_main = slider} sliderNav={this.slider_nav}/> */}
-        {/* <SliderWrapperNav shows={shows} ref={slider => this.slider_nav = slider} sliderMain={this.slide_main}/> */}
         <Container  ref={slider => this.slider = slider} 
                     shows={shows} 
                     queryParam={query_param}
