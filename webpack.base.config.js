@@ -22,9 +22,8 @@ const fileRules = {
   loader: 'file-loader',
   options: {
     name: "[name].[ext]",
-    publicPath: "./",
+    publicPath: "./assets",
     outputPath: './assets/',
-    useRelativePath: process.env.NODE_ENV === "production"
   }
 };
 

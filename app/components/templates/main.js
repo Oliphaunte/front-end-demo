@@ -1,12 +1,10 @@
 import React from 'react'
-import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory'
+import Slider from 'react-slick'
+import { Link } from 'react-router-dom'
 
 import QS from 'qs'
 import Container from '@/app/components/organisms/container'
 
-const History = createBrowserHistory()
 const api_url = 'http://localhost:3000/shows'
 
 class Main extends React.Component {
@@ -22,64 +20,65 @@ class Main extends React.Component {
     fetch(api_url)
       .then(res => res.json())
       .then(shows => this.setState({shows}) )
-      .then(() => this.updateParams())
-      .then(() => this.updateSlider())
+      .then(() => this.updateHistory())
       .catch(err => console.error(err));
-  }
-
-  componentDidUpdate() {
+    
     window.onpopstate = this.onPopState
   }
 
-  onPopState = async() => {
-    this.setState({ history_active: false })
-    await this.updateParams()
-    await this.updateSlider()
+  onPopState = () => {
+    this.setState({ history_active: false }, () => {
+      this.updateSliderOnDesync()
+    })
   }
 
-  updateParams = () => {
-    let { search } = this.props.location,
-        query_param = QS.parse(search, { ignoreQueryPrefix: true })
+  updateHistory = async(id) => {
+    let {history, location} = this.props,
+        param = id || this.parseParams(location),
+        new_location = { pathname: '/', search: `?id=${param['id']}` }
 
-    if (search) return this.setState({ query_param })
-    else return this.updateHistory(-1, 0)
+    await location.search ? history.push(new_location) : history.replace(new_location)
+    return this.updateSlider()
   }
 
-  updateHistory = (old_i, new_i) => {
-    let param = this.state.shows[new_i],
-        location = {
-          pathname: '/',
-          search: `?id=${param['id']}`
-        };
+  updateSlider = async(p) => {
+    let {shows} = this.state,
+        param = p || this.parseParams(location),
+        slider_index = shows.findIndex(v => v['id'] === param['id'])
 
-    if (old_i === -1) return History.replace(location)
-    if (this.state.history_active) return History.push(location)
+    await this.slider.slider_nav.slickGoTo(slider_index)
   }
 
-  updateSlider = () => {
-    let { shows, query_param } = this.state,
-        slider_index  = shows.findIndex(v => v['id'] === query_param['id']);
-
-    this.slider.slider_nav.slickGoTo(slider_index)
+  updateSliderOnDesync = async() => {
+    let {location} = this.props,
+        curr_param = this.parseParams(location)
+    
+    await this.updateSlider(curr_param)
   }
 
-  sliderBeforeChange = (old_i, new_i) => {
-    this.updateHistory(null, new_i)
+  // Returns params object e.x. {id: 'a1'}; If params empty, return first show id
+  parseParams = (location) => {
+    let {search} = location;
+
+    return search ? QS.parse(search, { ignoreQueryPrefix: true }) : this.state.shows[0]
   }
 
-  sliderAfterChange = () => {
-    this.setState({ history_active: true })
+  sliderAfterChange = async(i) => {
+    let id = this.state.shows[i]
+  
+    await this.state.history_active ? this.updateHistory(id) : this.setState({ history_active: true })
+    // React-Slick bug causes syncing issues with repeat scrolling. 
+    // In case of de-sync, re-sync slider_main with slicer_nav
+    this.slider.slider_main.slickGoTo(i)
   }
   
   render() {
-    let {shows, query_param} = this.state
+    let {shows} = this.state
 
     return(
       <main className="t__main-page">
         <Container  ref={slider => this.slider = slider} 
                     shows={shows} 
-                    queryParam={query_param}
-                    sliderBeforeChange={this.sliderBeforeChange} 
                     sliderAfterChange={this.sliderAfterChange} />
       </main>
     )

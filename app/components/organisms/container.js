@@ -1,5 +1,5 @@
 import React from 'react'
-import Slider from 'react-slick';
+import Slider from 'react-slick'
 
 class SliderContainer extends React.Component{
   constructor(props) {
@@ -17,7 +17,6 @@ class SliderContainer extends React.Component{
     }
 
     const settings_nav = {
-      beforeChange: this.props.sliderBeforeChange,
       afterChange: this.props.sliderAfterChange,
       centerMode: true,
       centerPadding: '60px',
@@ -43,7 +42,7 @@ class SliderContainer extends React.Component{
         }
       }]
     }
-
+    
     return (
       <React.Fragment>
         <div className="o__show-container">
